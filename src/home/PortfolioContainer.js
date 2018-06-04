@@ -1,26 +1,28 @@
-import {connect} from 'react-redux'
-import PortfolioComponent from './PortfolioComponent'
-import {homeOperations} from './duck'
+import { connect } from 'react-redux';
+import PortfolioComponent from './PortfolioComponent';
+import { homeOperations } from './duck';
 
 const mapStateToProps = (state) => {
-  const { portfolioData, showLoader} = state.home;
-  return{
-    portfolioData,
-    showLoader
-  }
-}
+  const { projectData, showLoader } = state.home;
+  return {
+    projectData,
+    showLoader,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
-  const fetchPortfolio = (portfolio) => {
-    dispatch(homeOperations.fetchPortfolioJson(project))
-  }
+  // Fetches the custom Post Type 'Portfolio' Json
+  // from WP API and pushes it into the Redux store.
+  const fetchPortfolioJson = (project) => {
+    dispatch(homeOperations.fetchPortfolioJson(project));
+  };
 
-  return{ fetchPortfolioJson}
-}
+  return { fetchPortfolioJson };
+};
 
 const PortfolioContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
-)(PortfolioComponent)
+  mapDispatchToProps,
+)(PortfolioComponent);
 
 export default PortfolioContainer;

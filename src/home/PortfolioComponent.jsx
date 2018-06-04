@@ -1,26 +1,42 @@
-import React from "react";
-import styled from "styled-components";
+import React, { Component } from 'react';
+import shortid from 'shortid';
+import styled from 'styled-components';
+import { Config } from '../config';
 
-export default function PortfolioComponent({
-  portfolioData,
-  showLoader,
-  fetchPortfolio
-}) {
-  if (showLoader) {
-    return <p>Loading...</p>;
+class PortfolioComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projects: [],
+    };
+  }
+  componentDidMount() {
+    fetch('http://localhost:8080/wp-json/wp/v2/projects')
+      .then((results) => results.json())
+      .then((data) => {
+        const projects = data.map((project) => (
+            <PortfolioWrapper
+              key={project.id}
+              bgColor={project.acf.background_color}
+            >
+              <ProjectTitle>{project.title.rendered}</ProjectTitle>
+            </PortfolioWrapper>
+          ));
+        this.setState({ projects });
+      });
   }
 
-  return (
-    <div>
-      {portfolioData.map((data, index) => (
-        <PortfolioWrapper bgColor={data.bgColor}>
-          <ProjectTitle>{data.title}</ProjectTitle>
-        </PortfolioWrapper>
-      ))}
-    </div>
-  );
+  render() {
+    return <Portfolio>{this.state.projects}</Portfolio>;
+  }
 }
 
+export default PortfolioComponent;
+
+const Portfolio = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 const PortfolioWrapper = styled.div`
   display: flex;
   background-color: ${props => props.bgColor};

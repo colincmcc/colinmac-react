@@ -1,43 +1,23 @@
-import React, { Component } from "react";
-import {
-  createStore,
-  combineReducers,
-  applyMiddleware,
-  compose
-} from "react-redux";
-import { ApolloProvider, ApolloClient } from "react-apollo";
-import styled from "styled-components";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import PortfolioComponent from './home/PortfolioComponent';
+import styled from 'styled-components';
 
+/*
+* Began to use Graphql with wordpress backend.
+* Had difficulties exposing custom fields and post-types.
+* Reverted to REST and Redux. Separated Redux with the ducks
+* system to remove it in the future with React Context API and Graphql.
+*/
 class App extends Component {
   render() {
-    // Todo: change uri to production site
-    const client = new ApolloClient({
-      uri: "http://localhost:8080/graphql"
-    });
-
-    const store = createStore(
-      combineReducers({
-        apollo: client.reducer()
-      }),
-      {}, // initial state
-      compose(applyMiddleware(client.middleware()))
-    );
-
     return (
-      // Todo: Apollo not needed yet, since we can't easily use graphql to fetch wordpress custom fields, remove extra code and revert back to using REST
-      <ApolloProvider store={store} client={client}>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
+      <Router>
+        <div>
+          <Route exact path="/" component={PortfolioComponent} />
+          <Route exact path="/home" component={PortfolioComponent} />
         </div>
-      </ApolloProvider>
+      </Router>
     );
   }
 }

@@ -1,8 +1,12 @@
-import { createActions } from 'reduxsauce'
+import { createActions } from 'reduxsauce';
 
+/*
+* Normally types & actions would be separated, but reduxsauce creates string literals for action types
+*/
 const { Creators, Types } = createActions({
   requestPortfolioJson: ['project'],
-  receivePortfolioJson: ['portfolioData']
-})
+  receivePortfolioJson: ['projectData'],
+});
 
-export { Creators, Types };
+export default { Creators, Types };
+

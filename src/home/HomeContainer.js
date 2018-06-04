@@ -1,7 +1,10 @@
-import {connect} from 'react-redux'
-import HomeComponent from './HomeComponent'
-import {homeOperations} from './duck'
+import { connect } from 'react-redux';
+import HomeComponent from './HomeComponent';
+import { homeOperations } from './duck';
 
-const HomeContainer = connect()(HomeComponent)
+// Highest level component
+// * Not needed until we add more complexity in the HomeComponent
 
-export default HomeContainer
+const HomeContainer = connect()(HomeComponent);
+
+export default HomeContainer;
