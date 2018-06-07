@@ -40,8 +40,9 @@ const receivePortfolioJson = json => ({
         data.push(childData);
         return data;
       });
-  ),
-});
+    })
+})
+
 
 export default { requestPortfolioJson, receivePortfolioJson };
 

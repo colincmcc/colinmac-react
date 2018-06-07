@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 export default function PortfolioComponent({ projectData, showLoader }) {
+  const projects = projectData.map(project => (
+    <PortfolioWrapper key={project.id} bgColor={project.acf.background_color}>
+      <ProjectTitle>{project.title.rendered}</ProjectTitle>
+    </PortfolioWrapper>
+  ));
+
   if (showLoader) {
     return <p>Loading...</p>;
   }
 
-  return (
-    <Portfolio>
-      {projectData.map(project => (
-        <PortfolioWrapper key={project.id} bgColor={project.background_color}>
-          <ProjectTitle>{project.title}</ProjectTitle>
-        </PortfolioWrapper>
-      ))}
-    </Portfolio>
-  );
+  return <Portfolio>{projects}</Portfolio>;
 }
 
 const Portfolio = styled.div`
