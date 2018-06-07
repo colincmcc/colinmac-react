@@ -1,7 +1,7 @@
 import types from './types';
 
+
 const initialState = {
-  project: '',
   showLoader: false,
   projectData: [],
 };
@@ -9,10 +9,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.REQUEST_PORTFOLIO_JSON: {
-      const { project } = action;
       return {
         ...state,
-        project,
         projectData: [],
         showLoader: true,
       };

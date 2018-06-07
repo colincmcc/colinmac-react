@@ -13,7 +13,7 @@ const request_portfolio_json = () => ({
 
 const receive_portfolio_json = (projectData) => ({
   type: types.RECEIVE_PORTFOLIO_JSON,
-  projectData
+   projectData
 })
 
 export default { request_portfolio_json, receive_portfolio_json };

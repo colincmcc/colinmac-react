@@ -8,14 +8,11 @@ import fetch from 'cross-fetch';
 import actions from './actions';
 
 
-const requestPortfolioJsonAction = Creators.requestPortfolioJsonAction;
-const receivePortfolioJsonAction = Creators.receivePortfolioJsonAction;
-
 // Fetch Portfolio Custom Posttype Json data from WP API and update the Redux store
 const fetchPortfolioJson = () =>
   (dispatch) => {
     // This will toggle the showLoader
-    dispatch(requestPortfolioJsonAction());
+    dispatch(actions.request_portfolio_json());
 
     // This will fetch and load the data
     return fetch('http://localhost:8080/wp-json/wp/v2/projects')
@@ -47,7 +44,7 @@ const fetchPortfolioJson = () =>
           return null;
         });
 
-        dispatch(receivePortfolioJsonAction(data));
+        dispatch(actions.receive_portfolio_json(data));
       });
   };
 export default fetchPortfolioJson;

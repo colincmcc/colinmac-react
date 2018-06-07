@@ -11,11 +11,8 @@ export default function PortfolioComponent({ projectData, showLoader }) {
   return (
     <Portfolio>
       {projectData.map(project => (
-        <PortfolioWrapper
-          key={project.id}
-          bgColor={project.acf.background_color}
-        >
-          <ProjectTitle>{project.title.rendered}</ProjectTitle>
+        <PortfolioWrapper key={project.id} bgColor={project.background_color}>
+          <ProjectTitle>{project.title}</ProjectTitle>
         </PortfolioWrapper>
       ))}
     </Portfolio>
