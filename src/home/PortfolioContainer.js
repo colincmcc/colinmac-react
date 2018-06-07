@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   // Fetches the custom Post Type 'Portfolio' Json
   // from WP API and pushes it into the Redux store.
-  const fetchPortfolioJson = (project) => {
-    dispatch(homeOperations.fetchPortfolioJson(project));
+  const fetchPortfolioJson = () => {
+    dispatch(homeOperations.fetchPortfolioJson());
   };
 
   return { fetchPortfolioJson };

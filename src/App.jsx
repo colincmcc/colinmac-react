@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import PortfolioComponent from './home/PortfolioComponent';
+import PortfolioContainer from './home/PortfolioContainer';
 import styled from 'styled-components';
 
 /*
@@ -14,8 +14,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={PortfolioComponent} />
-          <Route exact path="/home" component={PortfolioComponent} />
+          <Route exact path="/" component={PortfolioContainer} />
+          <Route exact path="/home" component={PortfolioContainer} />
         </div>
       </Router>
     );
