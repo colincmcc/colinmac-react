@@ -16,11 +16,10 @@ export default (state = initialState, action) => {
       };
     }
     case types.RECEIVE_PORTFOLIO_JSON: {
-      const { projectData } = action;
       return {
-        ...state,
-        projectData,
-        showLoader: true,
+        ...state.projects,
+        projectData: action.projectData,
+        showLoader: false,
       };
     }
     default:

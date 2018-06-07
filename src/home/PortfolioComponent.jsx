@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import shortid from 'shortid';
 import styled from 'styled-components';
-import { Config } from '../config';
 
 export default function PortfolioComponent({ projectData, showLoader }) {
   if (showLoader) {
